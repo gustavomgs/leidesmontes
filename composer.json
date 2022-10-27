@@ -1,0 +1,28 @@
+{
+    "name": "gustavomgs/leidesmontes",
+    "description": "Pacote de integração com api.leidosdesmontes.com.br/v1",
+    "type": "library",
+    "require": {
+      "php": ">=7.4"
+    },
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Gustavo Messias",
+        "email": "gustavo@messias.io"
+      }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+          "LeiDesmontes\\": "src/LeiDesmontes/"
+        }
+    },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "LeiDesmontes\\LeiDesmontesProvider"
+          ]
+        }
+      }
+  }
