@@ -42,7 +42,7 @@
     <a href="https://doc.leidosdesmontes.com.br/a/#/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/gustavomgs/leidesmontes#readme-top">View Demo</a>
     ·
     <a href="https://github.com/gustavomgs/leidesmontes/issues">Report Bug</a>
     ·
