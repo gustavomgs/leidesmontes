@@ -8,15 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 class LeiDesmontesLaudo
 {
     /**
-     * @var int
-     */
-    public int $idDocumentoIdentidade;
-    /**
-     * @var string
-     */
-    public string $numeroDocumento;
-
-    /**
      * @var string
      */
     public string $dataFinal;

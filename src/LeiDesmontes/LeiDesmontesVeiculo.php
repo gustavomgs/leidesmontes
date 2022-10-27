@@ -191,10 +191,25 @@ class LeiDesmontesVeiculo
      */
     public ?Collection $vendedor;
 
+    /**
+     * @var int
+     */
+    public int $tipo_veiculo;
+
+    /**
+     * @var string
+     */
+    public string $isDadosVeiculo;
+
+    /**
+     * @param VeiculosSisdel $veiculosSisdel
+     */
     public function __construct(VeiculosSisdel $veiculosSisdel)
     {
         $this->veiculosSisdel = $veiculosSisdel;
+        $this->tipo_veiculo   = $veiculosSisdel->tipo_veiculo;
         $this->setVendedor();
+        $this->setIsDadosVeiculo();
     }
 
     /**
@@ -203,5 +218,13 @@ class LeiDesmontesVeiculo
     private function setVendedor(): void
     {
         $this->vendedor = Fornecedor::where('cpf_cnpj', str_replace(array(".", "-", "/"), '', $this->veiculosSisdel->cpf_cnpj_comitente))->first() ?? [];
+    }
+
+    private function setIsDadosVeiculo(){
+        $this->isDadosVeiculo = 'N';
+
+        if($this->veiculosSisdel->num_renavam or $this->veiculosSisdel->num_motor or $this->veiculosSisdel->num_chassi){
+            $this->isDadosVeiculo = 'S';
+        }
     }
 }

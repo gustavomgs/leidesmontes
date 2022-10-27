@@ -33,6 +33,9 @@ class LeiDesmontesPeca
      */
     public string $nEtiqueta;
 
+    /**
+     * @throws Exception
+     */
     public function __construct(Produto $peca)
     {
         $this->peca = $peca;

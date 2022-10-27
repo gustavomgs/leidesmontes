@@ -12,9 +12,9 @@ class LeiDesmontesBuilders extends LeiDesmontesFormatters
 
     /**
      * @param VeiculosSisdel $veiculosSisdel
-     * @return $this
+     * @return LeiDesmontesVeiculo
      */
-    public function buildVeiculo(VeiculosSisdel $veiculosSisdel): LeiDesmontesBuilders
+    public function buildVeiculo(VeiculosSisdel $veiculosSisdel): LeiDesmontesVeiculo
     {
         $veiculo = new LeiDesmontesVeiculo($veiculosSisdel);
 
@@ -38,9 +38,9 @@ class LeiDesmontesBuilders extends LeiDesmontesFormatters
          * notaFiscalVeiculoDTO
          */
         $veiculo->dataNotaFiscalEntrada = $this->dataFormatada($veiculosSisdel->temNfeEntrada->created_at);
-        $veiculo->dataNotaVenda         = null;
+        $veiculo->dataNotaVenda         = $veiculosSisdel->data_emissao;
         $veiculo->noNotaFiscalEntrada   = $veiculosSisdel->temNfeEntrada->chave;
-        $veiculo->noNotaVenda           = null;
+        $veiculo->noNotaVenda           = $veiculosSisdel->num_nf;
         $veiculo->xmlNotaFiscalEntrada  = null;
         $veiculo->xmlNotaVenda          = null;
 
@@ -75,39 +75,34 @@ class LeiDesmontesBuilders extends LeiDesmontesFormatters
         $veiculo->numeroEndereco         = !$veiculo->vendedor ? null : $veiculo->vendedor->numero;
         $veiculo->telefone               = !$veiculo->vendedor ? null : $veiculo->vendedor->telefone;
 
-        return $this;
+        return $veiculo;
     }
 
     /**
      * @param Produto $peca
-     * @return $this
+     * @return LeiDesmontesPeca
+     * @throws Exception
      */
-    public function buildPeca(Produto $peca): LeiDesmontesBuilders
+    public function buildPeca(Produto $peca): LeiDesmontesPeca
     {
-        $pecaObj = new LeiDesmontesPeca();
+        $pecaObj = new LeiDesmontesPeca($peca);
 
         $pecaObj->codigoPeca = $peca->codigo;
         $pecaObj->idEstado   = $peca->codigo;
         $pecaObj->isAvulsa   = $this->isAvulsa($peca);
         $pecaObj->nEtiqueta  = $peca->etiquetaFormatada();
 
-        return $this;
+        return $pecaObj;
     }
 
     /**
      * @param VeiculosSisdel $veiculosSisdel
-     * @return $this
+     * @return LeiDesmontesLaudo
      * @throws Exception
      */
-    public function buildLaudo(VeiculosSisdel $veiculosSisdel): LeiDesmontesBuilders
+    public function buildLaudo(VeiculosSisdel $veiculosSisdel): LeiDesmontesLaudo
     {
         $laudo = new LeiDesmontesLaudo();
-
-        /**
-         * informacaoIdentificacaoDTO
-         */
-         $laudo->idDocumentoIdentidade = 0;
-         $laudo->numeroDocumento       = null;
 
         /**
          * informacaoLaudoDTO
@@ -129,6 +124,6 @@ class LeiDesmontesBuilders extends LeiDesmontesFormatters
         $laudo->noPlaca    = $veiculosSisdel->placa;
         $laudo->noRenavam  = $veiculosSisdel->num_renavam ?? null;
 
-        return $this;
+        return $laudo;
     }
 }
