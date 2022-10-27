@@ -3,7 +3,8 @@
     "description": "Pacote de integração com api.leidosdesmontes.com.br/v1",
     "type": "library",
     "require": {
-      "php": ">=7.4"
+      "php": ">=7.4",
+      "guzzlehttp/guzzle": "^7.0.1"
     },
     "license": "MIT",
     "authors": [
