@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://doc.leidosdesmontes.com.br/a/#/">
     <img src="https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -87,7 +87,7 @@ _For more examples, please refer to the [Documentation](https://doc.leidosdesmon
 
 Gustavo Messias - gustavo@messias.io
 
-Project Link: [https://github.com/gustavomgs/leidesmontes](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/gustavomgs/leidesmontes](https://github.com/gustavomgs/leidesmontes)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
